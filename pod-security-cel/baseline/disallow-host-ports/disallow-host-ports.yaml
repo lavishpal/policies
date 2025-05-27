@@ -35,12 +35,10 @@ spec:
                object.spec.?initContainers.orValue([]) + 
                object.spec.?ephemeralContainers.orValue([])
       expressions:
-          - expression: >-
+        - expression: >-
                variables.allContainers.all(container, 
                container.?ports.orValue([]).all(port, port.?hostPort.orValue(0) == 0))
-            message: |-
+          message: |-
                Use of host ports is disallowed. The field spec.containers[*].ports[*].hostPort,
                spec.initContainers[*].ports[*].hostPort, and spec.ephemeralContainers[*].ports[*].hostPort
                must either be unset or set to `0`.
-
-          
